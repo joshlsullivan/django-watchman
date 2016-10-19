@@ -3,11 +3,9 @@
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
 <div class="container">
-  {% if computers %}
-  <ul>
-    {% for computer in computers %}
-    <li><a href="{% url 'detail' computer.id %}">{{ computer.machine_name }}</a></li>
-    {% endfor %}
+  {% if computer %}
+  <ul class="list-group">
+    <li class="list-group-item">{{ computer.serial_number }}</li>
   </ul>
   {% else %}
     <p>No computers</p>

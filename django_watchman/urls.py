@@ -20,4 +20,5 @@ from computers import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.get_computer_list, name='computers'),
+    url(r'^([A-Za-z0-9\_]+)/$', views.get_computer_detail, name='detail'),
 ]
