@@ -3,11 +3,25 @@
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
 <div class="container">
-  {% if computer %}
-  <ul class="list-group">
-    <li class="list-group-item">{{ computer.serial_number }}</li>
-  </ul>
-  {% else %}
-    <p>No computers</p>
-  {% endif %}
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      {% if computer %}
+      <div class="page-header">
+        <h3>{{ computer.machine_name }}</h3>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">Serial Number: {{ computer.serial_number }}</li>
+        <li class="list-group-item">OS Version: {{ computer.os_version }}</li>
+        {% if computer.has_issue %}
+        <li class="list-group-item">Issues: Yes</li>
+        {% else %}
+        <li class="list-group-item">Issues: None</li>
+        {% endif %}
+      </ul>
+
+      {% else %}
+        <p>No computers</p>
+      {% endif %}
+    </div>
+  </div>
 </div>

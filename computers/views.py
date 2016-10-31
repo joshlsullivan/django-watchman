@@ -6,9 +6,9 @@ url = "https://{0}.monitoringclient.com/v2.2/computers?api_key={1}&expand[]=plug
 r = requests.get(url)
 computers = r.json()
 
-def get_computer_id(request):
+def get_computer_id():
     for computer in computers:
-        return computer['id']
+        return computer.id
 
 def get_computer_list(request):
     if r.status_code == requests.codes.ok:
@@ -21,7 +21,8 @@ def get_computer_list(request):
 
 def get_computer_detail(request, get_computer_id):
     for computer in computers:
-        context = {
-            'computer':computer,
-        }
-        return render(request, 'computers/detail.html', context)
+        if computer['id'] == get_computer_id:
+            context = {
+                'computer':computer,
+            }
+            return render(request, 'computers/detail.html', context)
