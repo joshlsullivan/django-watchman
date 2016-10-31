@@ -3,13 +3,17 @@
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
 <div class="container">
-  {% if computers %}
-  <ul>
-    {% for computer in computers %}
-    <li><a href="{% url 'detail' computer.id %}">{{ computer.machine_name }}</a></li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>No computers</p>
-  {% endif %}
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+    {% if computers %}
+    <ul class="list-group">
+      {% for computer in computers %}
+      <li class="list-group-item"><a href="{% url 'detail' computer.id %}">{{ computer.machine_name }} | {{ computer.last_user }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>No computers</p>
+    {% endif %}
+    </div>
+  </div>
 </div>
