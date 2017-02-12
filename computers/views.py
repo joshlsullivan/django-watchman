@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.conf import settings
 import requests
+from django.core.mail import send_mail
 
 url = "https://{0}.monitoringclient.com/v2.2/computers?api_key={1}&expand[]=plugin_results".format(settings.WATCHMAN_SUBDOMAIN, settings.WATCHMAN_API)
 r = requests.get(url)
 computers = r.json()
+    
 
 def get_computer_id():
     for computer in computers:

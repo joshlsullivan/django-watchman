@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Client, EmailSent
 
-# Register your models here.
+@admin.register(Client, EmailSent)
+class ClientAdmin(admin.ModelAdmin):
+    pass
